@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interview Simulation - Home</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body {
+            background-color: #f0f8ff;
+            font-family: Arial, sans-serif;
+            transition: background-color 0.5s ease;
+        }
+        .home-card {
+            margin-top: 80px;
+            padding: 40px;
+            border-radius: 15px;
+            background: #fff;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-align: center;
+        }
+        h1 {
+            color: #007bff;
+            margin-bottom: 20px;
+        }
+        .robot-container {
+            margin: 20px auto;
+        }
+        .robot img {
+            width: 150px;
+        }
+        .speech-bubble {
+            position: relative;
+            background: #f0f8ff;
+            border-radius: .4em;
+            padding: 15px;
+            margin-top: 20px;
+            display: inline-block;
+        }
+        .speech-bubble:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50px;
+            width: 0;
+            height: 0;
+            border: 20px solid transparent;
+            border-top-color: #f0f8ff;
+            border-bottom: 0;
+            margin-left: -10px;
+            margin-bottom: -20px;
+        }
+    </style>
+</head>
+<body class="container">
+    <div class="home-card">
+        <h1>Welcome to the Interview Simulation</h1>
+
+        <div class="robot-container">
+            <div class="robot">
+                <img src="{{ url_for('static', filename='images/robot.png') }}" alt="Interview Robot">
+            </div>
+            <div class="speech-bubble">
+                Ready to begin? Click below to start your interview journey!
+            </div>
+        </div>
+
+        <form action="{{ url_for('round1') }}" method="get">
+            <button type="submit" class="btn btn-primary btn-lg mt-4">Start Interview</button>
+        </form>
+    </div>
+</body>
+</html>

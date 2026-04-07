@@ -1,0 +1,52 @@
+{
+  "round": 3,
+  "title": "Technical Interview - Round 3 (MCQs)",
+  "total_marks": 20,
+  "sections": [
+    {
+      "section_name": "MCQ",
+      "questions": [
+        {
+          "id": 1,
+          "type": "mcq",
+          "marks": 4,
+          "question": "Which data structure uses LIFO (Last In First Out)?",
+          "options": ["Queue", "Stack", "Linked List", "Tree"],
+          "answer": "Stack"
+        },
+        {
+          "id": 2,
+          "type": "mcq",
+          "marks": 4,
+          "question": "Which protocol is connection-oriented?",
+          "options": ["UDP", "TCP", "HTTP", "SMTP"],
+          "answer": "TCP"
+        },
+        {
+          "id": 3,
+          "type": "mcq",
+          "marks": 4,
+          "question": "Which SQL command is used to remove a table?",
+          "options": ["DELETE", "DROP", "REMOVE", "TRUNCATE"],
+          "answer": "DROP"
+        },
+        {
+          "id": 4,
+          "type": "mcq",
+          "marks": 4,
+          "question": "Which layer of the OSI model deals with routing?",
+          "options": ["Transport", "Network", "Session", "Application"],
+          "answer": "Network"
+        },
+        {
+          "id": 5,
+          "type": "mcq",
+          "marks": 4,
+          "question": "Which of the following is NOT a programming paradigm?",
+          "options": ["Object-Oriented", "Functional", "Procedural", "Relational"],
+          "answer": "Relational"
+        }
+      ]
+    }
+  ]
+}

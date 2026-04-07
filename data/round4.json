@@ -1,0 +1,40 @@
+{
+  "round": 4,
+  "title": "Managerial Interview - Round 4",
+  "total_marks": 20,
+  "sections": [
+    {
+      "section_name": "Managerial",
+      "questions": [
+        {
+          "id": 1,
+          "type": "theory",
+          "marks": 5,
+          "question": "How do you handle conflicts within a team?",
+          "keywords": ["communication", "resolution", "empathy"]
+        },
+        {
+          "id": 2,
+          "type": "theory",
+          "marks": 5,
+          "question": "Describe a time you motivated your team.",
+          "keywords": ["motivation", "leadership", "goal"]
+        },
+        {
+          "id": 3,
+          "type": "theory",
+          "marks": 5,
+          "question": "How do you prioritize tasks under pressure?",
+          "keywords": ["time management", "prioritization", "focus"]
+        },
+        {
+          "id": 4,
+          "type": "theory",
+          "marks": 5,
+          "question": "What is your approach to delegation?",
+          "keywords": ["trust", "responsibility", "efficiency"]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,82 @@
+{
+  "round": 2,
+  "title": "Technical Interview - Round 2",
+  "total_marks": 50,
+  "sections": [
+    {
+      "section_name": "Theory",
+      "questions": [
+        {
+          "id": 1,
+          "type": "theory",
+          "marks": 5,
+          "question": "What is recursion?",
+          "keywords": ["base case", "recursive case", "call stack"]
+        },
+        {
+          "id": 2,
+          "type": "theory",
+          "marks": 5,
+          "question": "Explain time complexity.",
+          "keywords": ["Big O", "worst case", "best case"]
+        },
+        {
+          "id": 3,
+          "type": "theory",
+          "marks": 5,
+          "question": "What is deadlock?",
+          "keywords": ["mutual exclusion", "hold and wait", "no preemption", "circular wait"]
+        },
+        {
+          "id": 4,
+          "type": "theory",
+          "marks": 5,
+          "question": "Difference between process and thread.",
+          "keywords": ["lightweight", "shared memory", "parallelism"]
+        },
+        {
+          "id": 5,
+          "type": "theory",
+          "marks": 5,
+          "question": "What is paging in OS?",
+          "keywords": ["frames", "pages", "virtual memory"]
+        },
+        {
+          "id": 6,
+          "type": "theory",
+          "marks": 5,
+          "question": "Explain OSI layers.",
+          "keywords": ["physical", "data link", "network", "transport", "session", "presentation", "application"]
+        },
+        {
+          "id": 7,
+          "type": "theory",
+          "marks": 5,
+          "question": "Difference between TCP and UDP.",
+          "keywords": ["connection-oriented", "connectionless", "reliable", "faster"]
+        },
+        {
+          "id": 8,
+          "type": "theory",
+          "marks": 5,
+          "question": "Explain normalization.",
+          "keywords": ["1NF", "2NF", "3NF", "BCNF"]
+        },
+        {
+          "id": 9,
+          "type": "theory",
+          "marks": 5,
+          "question": "Explain ACID properties.",
+          "keywords": ["atomicity", "consistency", "isolation", "durability"]
+        },
+        {
+          "id": 10,
+          "type": "theory",
+          "marks": 5,
+          "question": "What is polymorphism in OOPS?",
+          "keywords": ["overloading", "overriding", "inheritance"]
+        }
+      ]
+    }
+  ]
+}

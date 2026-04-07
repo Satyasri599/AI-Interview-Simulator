@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>AI Interview Simulation Platform</title>
+<style>
+body{margin:0;font-family:'Segoe UI',sans-serif;background:linear-gradient(135deg,#1e3c72,#2a5298);color:white;height:100vh;display:flex;flex-direction:column;}
+.navbar{display:flex;align-items:center;padding:12px 40px;background:white;color:#333;box-shadow:0 3px 10px rgba(0,0,0,0.15);}
+.navbar img{width:60px;margin-right:15px;}
+.nav-title{display:flex;flex-direction:column;}
+.nav-title h2{margin:0;font-size:22px;color:#1e3c72;}
+.nav-title p{margin:0;font-size:14px;color:#c03333;}
+.main{flex:1;display:flex;justify-content:center;align-items:center;text-align:center;padding:20px;animation:slideUp 1s ease;}
+.container{max-width:700px;}
+.welcome{font-size:26px;margin-bottom:5px;font-weight:400;}
+.platform{font-size:40px;font-weight:700;margin:0;color:#4facfe;}
+.college{margin-top:10px;font-size:18px;letter-spacing:1px;}
+.container p{font-size:18px;opacity:0.9;line-height:1.6;margin-top:20px;}
+button{margin-top:30px;padding:14px 32px;font-size:16px;border:none;border-radius:8px;background:#4facfe;color:white;cursor:pointer;transition:0.3s;}
+button:hover{background:#2b7de9;transform:scale(1.05);}
+.robot{position:absolute;right:60px;bottom:0;width:260px;animation:float 3s infinite ease-in-out;}
+@keyframes slideUp{from{opacity:0;transform:translateY(60px);}to{opacity:1;transform:translateY(0);}}
+@keyframes float{0%{transform:translateY(0)}50%{transform:translateY(-12px)}100%{transform:translateY(0)}}
+</style>
+</head>
+<body>
+<div class="navbar">
+<img src="{{ url_for('static', filename='images/logo.jpg') }}">
+<div class="nav-title">
+<h2>AI Interview Simulation Platform</h2>
+<p>Sridevi Women's Engineering College</p>
+</div>
+</div>
+<div class="main">
+<div class="container">
+<h1 class="welcome">Welcome to</h1>
+<h1 class="platform">AI Interview Simulation Platform</h1>
+<p class="college">Developed at <b>SRIDEVI WOMEN'S ENGINEERING COLLEGE</b></p>
+<p>This platform allows students to practice technical interviews through an intelligent simulation environment designed to enhance confidence and improve interview performance.</p>
+<button onclick="start()">Get Started</button>
+</div>
+</div>
+<img src="https://cdn-icons-png.flaticon.com/512/4712/4712109.png" class="robot">
+<script>
+function start(){
+window.location.href="{{ url_for('login') }}";
+}
+</script>
+</body>
+</html>

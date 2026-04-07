@@ -1,0 +1,79 @@
+{
+  "aptitude": [
+    {
+      "id": 1,
+      "question": "If a train travels 60 km/hr, how much distance will it cover in 5 hours?",
+      "options": ["240 km", "250 km", "300 km", "320 km"],
+      "answer": "300 km"
+    },
+    {
+      "id": 2,
+      "question": "What is 25% of 480?",
+      "options": ["100", "120", "150", "200"],
+      "answer": "120"
+    },
+    {
+      "id": 3,
+      "question": "Find the next number: 3, 6, 12, 24, ?",
+      "options": ["36", "40", "48", "50"],
+      "answer": "48"
+    },
+    {
+      "id": 4,
+      "question": "What is the square root of 225?",
+      "options": ["10", "12", "13", "15"],
+      "answer": "15"
+    },
+    {
+      "id": 5,
+      "question": "If A = 60% of B, then B = ?",
+      "options": ["A/0.6", "A*0.6", "A*1.6", "A+60"],
+      "answer": "A/0.6"
+    },
+    {
+      "id": 6,
+      "question": "What is the average of 5, 10, 15, 20?",
+      "options": ["10", "12.5", "15", "20"],
+      "answer": "12.5"
+    },
+    {
+      "id": 7,
+      "question": "If selling price is ₹600 and profit is ₹100, what is cost price?",
+      "options": ["₹400", "₹450", "₹500", "₹550"],
+      "answer": "₹500"
+    },
+    {
+      "id": 8,
+      "question": "A clock shows 3:15. What is the angle between hour and minute hand?",
+      "options": ["0°", "7.5°", "15°", "30°"],
+      "answer": "7.5°"
+    },
+    {
+      "id": 9,
+      "question": "What is the LCM of 12 and 18?",
+      "options": ["24", "36", "48", "72"],
+      "answer": "36"
+    },
+    {
+      "id": 10,
+      "question": "Find the odd one out: 2, 4, 8, 16, 20",
+      "options": ["8", "16", "20", "4"],
+      "answer": "20"
+    }
+  ],
+
+  "coding": [
+    {
+      "id": 1,
+      "question": "Write a program to add two numbers.",
+      "sample_input": "2 3",
+      "expected_output": "5"
+    },
+    {
+      "id": 2,
+      "question": "Write a program to reverse a string.",
+      "sample_input": "hello",
+      "expected_output": "olleh"
+    }
+  ]
+}

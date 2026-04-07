@@ -1,0 +1,35 @@
+{
+  "rating_scale": {
+    "90-100": "Excellent",
+    "75-89": "Very Good",
+    "60-74": "Good",
+    "40-59": "Average",
+    "0-39": "Needs Improvement"
+  },
+  "feedback_rules": [
+    {
+      "condition": "aptitude_high_coding_low",
+      "feedback": "Strong logical reasoning skills but needs improvement in coding fundamentals."
+    },
+    {
+      "condition": "theory_high_hr_low",
+      "feedback": "Excellent technical knowledge but needs better communication and interpersonal skills."
+    },
+    {
+      "condition": "overall_strong",
+      "feedback": "Consistently strong across all rounds. Highly recommended candidate."
+    },
+    {
+      "condition": "overall_weak",
+      "feedback": "Performance is weak across multiple rounds. Candidate needs improvement in several areas."
+    },
+    {
+      "condition": "coding_strong_hr_weak",
+      "feedback": "Good technical and coding ability, but HR responses show lack of confidence and communication."
+    },
+    {
+      "condition": "managerial_strong_theory_weak",
+      "feedback": "Strong leadership and managerial skills, but technical theory knowledge needs improvement."
+    }
+  ]
+}

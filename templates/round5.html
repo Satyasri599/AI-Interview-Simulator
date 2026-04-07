@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Round 5 - HR Questions</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <style>
+        body { background-color: #f0f8ff; position: relative; padding-right: 240px; } /* Space for dashboard */
+        .question-card { display: none; margin-bottom: 20px; }
+        .question-card.active { display: block; }
+        .card { box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h2 { font-weight: bold; }
+        textarea { width: 100%; min-height: 150px; border-radius: 5px; border: 1px solid #ccc; padding: 10px; }
+
+        /* --- PROCTORING DASHBOARD STYLES --- */
+        #proctor-dashboard {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            width: 210px;
+            z-index: 1000;
+        }
+
+        .camera-box {
+            background: #000;
+            border: 2px solid #3498db;
+            border-radius: 8px 8px 0 0;
+            overflow: hidden;
+            height: 150px;
+            position: relative;
+        }
+
+        #camera-feed {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transform: scaleX(-1);
+        }
+
+        .camera-label {
+            position: absolute;
+            bottom: 5px;
+            left: 5px;
+            background: rgba(0, 0, 0, 0.6);
+            color: #2ecc71;
+            font-size: 0.7rem;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            display: flex;
+            align-items: center;
+        }
+
+        .dot {
+            height: 8px;
+            width: 8px;
+            background-color: #2ecc71;
+            border-radius: 50%;
+            display: inline-block;
+            margin-right: 5px;
+            animation: blinker 1.5s linear infinite;
+        }
+
+        #timer-container {
+            background: #2c3e50;
+            color: white;
+            padding: 10px;
+            border-radius: 0 0 8px 8px;
+            font-family: monospace;
+            font-size: 1.3rem;
+            font-weight: bold;
+            text-align: center;
+            border: 2px solid #3498db;
+            border-top: none;
+        }
+
+        .time-low {
+            background: #e74c3c !important;
+        }
+
+        @keyframes blinker {
+            50% { opacity: 0.3; }
+        }
+    </style>
+</head>
+<body class="container mt-4">
+
+    <div id="proctor-dashboard">
+        <div class="camera-box">
+            <video id="camera-feed" autoplay playsinline muted></video>
+            <div class="camera-label">
+                <span class="dot"></span> Camera Active
+            </div>
+        </div>
+        <div id="timer-container">
+            <span id="time-display">60:00</span>
+        </div>
+    </div>
+
+    <h2 class="mb-4 text-primary">Round 5 - HR Questions</h2>
+
+    <div id="progress" class="mb-3 fw-bold text-primary"></div>
+
+    <form method="POST" id="hrForm">
+        {% for section in questions["sections"] %}
+            {% if section["section_name"] == "HR" %}
+                {% for q in section["questions"] %}
+                <div class="card question-card" id="q{{ loop.index0 }}">
+                    <div class="card-body">
+                        <h5 class="card-title">
+                            Question {{ loop.index }} of {{ section["questions"]|length }}
+                        </h5>
+                        <p class="fw-semibold">{{ q["question"] }}</p>
+                        <textarea name="hr_input{{ loop.index0 }}" 
+                                  placeholder="Write your answer here..." required></textarea>
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+
+        <div class="mt-3">
+            <button type="button" class="btn btn-secondary me-2" id="prevBtn">Previous</button>
+            <button type="button" class="btn btn-secondary me-2" id="nextBtn">Next</button>
+            <button type="submit" class="btn btn-primary" id="submitBtn" style="display:none;">Submit Interview</button>
+        </div>
+    </form>
+
+    <script>
+        // --- CAMERA LOGIC ---
+        async function startCamera() {
+            try {
+                const stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+                const videoElement = document.getElementById('camera-feed');
+                videoElement.srcObject = stream;
+            } catch (err) {
+                console.error("Error accessing camera: ", err);
+            }
+        }
+
+        // --- TIMER LOGIC ---
+        function startGlobalTimer() {
+            const totalTime = 60 * 60; 
+            let startTime = localStorage.getItem('interview_start_time');
+
+            if (!startTime) {
+                startTime = Math.floor(Date.now() / 1000);
+                localStorage.setItem('interview_start_time', startTime);
+            }
+
+            const display = document.querySelector('#time-display');
+            const container = document.querySelector('#timer-container');
+
+            const timerInterval = setInterval(function () {
+                const now = Math.floor(Date.now() / 1000);
+                const elapsed = now - startTime;
+                const remaining = totalTime - elapsed;
+
+                if (remaining <= 0) {
+                    clearInterval(timerInterval);
+                    localStorage.removeItem('interview_start_time');
+                    alert("Time is up! Your interview is being submitted.");
+                    document.getElementById('hrForm').submit();
+                    return;
+                }
+
+                let mins = Math.floor(remaining / 60);
+                let secs = remaining % 60;
+                display.textContent = (mins < 10 ? "0" + mins : mins) + ":" + (secs < 10 ? "0" + secs : secs);
+
+                if (remaining < 300) container.classList.add('time-low');
+            }, 1000);
+        }
+
+        // --- NAVIGATION & SUBMISSION LOGIC ---
+        const questions = document.querySelectorAll('.question-card');
+        const progress = document.getElementById('progress');
+        const prevBtn = document.getElementById('prevBtn');
+        const nextBtn = document.getElementById('nextBtn');
+        const submitBtn = document.getElementById('submitBtn');
+        const hrForm = document.getElementById('hrForm');
+        let current = 0;
+
+        function showQuestion(index) {
+            questions.forEach((q, i) => q.classList.toggle('active', i === index));
+            progress.textContent = `Question ${index+1} of ${questions.length}`;
+            prevBtn.style.display = index === 0 ? 'none' : 'inline-block';
+            nextBtn.style.display = index === questions.length-1 ? 'none' : 'inline-block';
+            submitBtn.style.display = index === questions.length-1 ? 'inline-block' : 'none';
+        }
+
+        prevBtn.addEventListener('click', () => { if (current > 0) showQuestion(--current); });
+        nextBtn.addEventListener('click', () => { if (current < questions.length-1) showQuestion(++current); });
+
+        hrForm.addEventListener('submit', () => {
+            localStorage.removeItem('interview_start_time');
+        });
+
+        window.onload = function() {
+            showQuestion(current);
+            startGlobalTimer();
+            startCamera();
+        };
+    </script>
+</body>
+</html>

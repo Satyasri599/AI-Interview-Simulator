@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Interview Instructions</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+body{height:100vh;display:flex;justify-content:center;align-items:center;background:linear-gradient(135deg,#0f2027,#203a43,#2c5364);color:white;}
+.container{width:700px;padding:40px;border-radius:15px;background:rgba(255,255,255,0.08);backdrop-filter:blur(10px);box-shadow:0 10px 40px rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.2);}
+.header{text-align:center;margin-bottom:25px;}
+.header h1{font-size:28px;letter-spacing:1px;}
+.header p{font-size:14px;opacity:0.8;margin-top:5px;}
+h2{margin-bottom:15px;text-align:center;color:#00e5ff;}
+ul{line-height:1.9;font-size:16px;margin-top:10px;}
+ul li{margin-left:15px;}
+.agree-section{margin-top:25px;display:flex;align-items:center;gap:10px;font-size:16px;}
+.agree-section input{transform:scale(1.2);cursor:pointer;}
+button{margin-top:25px;width:100%;padding:14px;border:none;border-radius:10px;background:#00c6ff;background:linear-gradient(90deg,#00c6ff,#0072ff);color:white;font-size:18px;font-weight:bold;cursor:pointer;transition:0.3s;}
+button:hover{transform:scale(1.03);box-shadow:0 5px 20px rgba(0,114,255,0.6);}
+button:disabled{background:gray;cursor:not-allowed;box-shadow:none;transform:none;}
+.footer{margin-top:20px;text-align:center;font-size:13px;opacity:0.7;}
+</style>
+</head>
+<body>
+<div class="container">
+<div class="header">
+<h1>AI Interview Simulation Platform</h1>
+<p>Developed at SRIDEVI WOMEN'S ENGINEERING COLLEGE</p>
+</div>
+<h2>Interview Instructions</h2>
+<ul>
+<li>Ensure you are in a quiet environment before starting the interview.</li>
+<li>Make sure your camera is turned on during the interview.</li>
+<li>Do not switch tabs or minimize the browser during the interview.</li>
+<li>Each round contains different types of questions.</li>
+<li>Read each question carefully before answering.</li>
+<li>For MCQ questions select the correct option.</li>
+<li>For theory questions type your answer clearly in the textbox.</li>
+<li>The interview contains 5 rounds: Aptitude, Technical, Theory, Managerial, and HR.</li>
+<li>Try to answer honestly to get accurate feedback.</li>
+<li>Your final score and feedback will be displayed after completing all rounds.</li>
+</ul>
+<div class="agree-section">
+<input type="checkbox" id="agree" onchange="enableButton()">
+<label for="agree">I agree to the instructions</label>
+</div>
+<button id="startBtn" onclick="startInterview()" disabled>Start Interview</button>
+<div class="footer">Please read all instructions carefully before starting the interview.</div>
+</div>
+<script>
+function enableButton(){
+document.getElementById("startBtn").disabled = !document.getElementById("agree").checked;
+}
+function startInterview(){
+    // This now points to your specific interview start page
+    window.location.href="{{ url_for('start_interview_page') }}";
+}
+</script>
+</body>
+</html>
